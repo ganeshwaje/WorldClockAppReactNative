@@ -1,118 +1,160 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+// App.tsx
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Text,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
+import { format, toZonedTime } from 'date-fns-tz';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const initialTimeZones: TimeZoneItem[] = [
+  {
+    id: '1',
+    cityName: 'San Francisco',
+    timeZone: 'America/Los_Angeles',
+    offset: -7,
+  },
+  {
+    id: '2',
+    cityName: 'New York',
+    timeZone: 'America/New_York',
+    offset: -4,
+  },
+  {
+    id: '3',
+    cityName: 'London',
+    timeZone: 'Europe/London',
+    offset: 1,
+  },
+  {
+    id: '4',
+    cityName: 'Tokyo',
+    timeZone: 'Asia/Tokyo',
+    offset: 9,
+  },
+];
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const WorldClockApp: React.FC = () => {
+  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const [timeZones] = useState<TimeZoneItem[]>(initialTimeZones);
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+    return () => clearInterval(timer);
+  }, []);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  const renderItem = ({ item }: { item: TimeZoneItem }) => {
+    const zonedDate = toZonedTime(currentTime, item.timeZone);
+    
+    const timeInZone = format(zonedDate, 'HH:mm:ss', {
+      timeZone: item.timeZone,
+    });
+
+    const today = format(zonedDate, 'EEE', {
+      timeZone: item.timeZone,
+    });
+
+    const isYesterday = item.offset < 0 && new Date().getUTCHours() + item.offset < 0;
+    const isTomorrow = item.offset > 0 && new Date().getUTCHours() + item.offset >= 24;
+    const dayLabel = isYesterday ? 'Yesterday' : isTomorrow ? 'Tomorrow' : 'Today';
+
+    return (
+      <TouchableOpacity style={styles.itemContainer}>
+        <View style={styles.leftContent}>
+          <Text style={styles.cityName}>{item.cityName}</Text>
+          <Text style={styles.dayInfo}>{`${dayLabel}, ${today}`}</Text>
+        </View>
+        <Text style={styles.time}>{timeInZone}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>World Clock</Text>
+        <TouchableOpacity style={styles.addButton}>
+          <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={timeZones}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        style={styles.list}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#333333',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  headerTitle: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
   },
-  highlight: {
-    fontWeight: '700',
+  addButton: {
+    padding: 8,
+  },
+  addButtonText: {
+    fontSize: 28,
+    color: '#007AFF',
+    fontWeight: '500',
+  },
+  list: {
+    flex: 1,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  leftContent: {
+    flex: 1,
+  },
+  cityName: {
+    fontSize: 20,
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  dayInfo: {
+    fontSize: 15,
+    color: '#666666',
+  },
+  time: {
+    fontSize: 48,
+    color: '#FFFFFF',
+    fontVariant: ['tabular-nums'],
+  },
+  separator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#333333',
+    marginLeft: 16,
   },
 });
 
-export default App;
+export default WorldClockApp;
