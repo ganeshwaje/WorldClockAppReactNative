@@ -139,7 +139,7 @@ This project is licensed under the MIT License - see the ![LICENSE](LICENSE.md) 
 
 ## Screenshots
 
-<img src="./homeScreen.png" width="200" /><img src="./timezones.png" width="200" />
+<img src="./homeScreen.png" width="200" />   <img src="./timezones.png" width="200" />
 
 ## Future Improvements
 
