@@ -1,0 +1,334 @@
+{
+    "timeZones": [
+      {
+        "cityName": "Los Angeles",
+        "timeZone": "America/Los_Angeles",
+        "offset": -7,
+        "country": "United States"
+      },
+      {
+        "cityName": "New York",
+        "timeZone": "America/New_York",
+        "offset": -4,
+        "country": "United States"
+      },
+      {
+        "cityName": "Chicago",
+        "timeZone": "America/Chicago",
+        "offset": -5,
+        "country": "United States"
+      },
+      {
+        "cityName": "Denver",
+        "timeZone": "America/Denver",
+        "offset": -6,
+        "country": "United States"
+      },
+      {
+        "cityName": "Toronto",
+        "timeZone": "America/Toronto",
+        "offset": -4,
+        "country": "Canada"
+      },
+      {
+        "cityName": "Vancouver",
+        "timeZone": "America/Vancouver",
+        "offset": -7,
+        "country": "Canada"
+      },
+      {
+        "cityName": "Mexico City",
+        "timeZone": "America/Mexico_City",
+        "offset": -5,
+        "country": "Mexico"
+      },
+      {
+        "cityName": "São Paulo",
+        "timeZone": "America/Sao_Paulo",
+        "offset": -3,
+        "country": "Brazil"
+      },
+      {
+        "cityName": "Rio de Janeiro",
+        "timeZone": "America/Sao_Paulo",
+        "offset": -3,
+        "country": "Brazil"
+      },
+      {
+        "cityName": "Buenos Aires",
+        "timeZone": "America/Argentina/Buenos_Aires",
+        "offset": -3,
+        "country": "Argentina"
+      },
+      {
+        "cityName": "Santiago",
+        "timeZone": "America/Santiago",
+        "offset": -4,
+        "country": "Chile"
+      },
+      {
+        "cityName": "Lima",
+        "timeZone": "America/Lima",
+        "offset": -5,
+        "country": "Peru"
+      },
+      {
+        "cityName": "Bogota",
+        "timeZone": "America/Bogota",
+        "offset": -5,
+        "country": "Colombia"
+      },
+      {
+        "cityName": "London",
+        "timeZone": "Europe/London",
+        "offset": 1,
+        "country": "United Kingdom"
+      },
+      {
+        "cityName": "Paris",
+        "timeZone": "Europe/Paris",
+        "offset": 2,
+        "country": "France"
+      },
+      {
+        "cityName": "Berlin",
+        "timeZone": "Europe/Berlin",
+        "offset": 2,
+        "country": "Germany"
+      },
+      {
+        "cityName": "Rome",
+        "timeZone": "Europe/Rome",
+        "offset": 2,
+        "country": "Italy"
+      },
+      {
+        "cityName": "Madrid",
+        "timeZone": "Europe/Madrid",
+        "offset": 2,
+        "country": "Spain"
+      },
+      {
+        "cityName": "Amsterdam",
+        "timeZone": "Europe/Amsterdam",
+        "offset": 2,
+        "country": "Netherlands"
+      },
+      {
+        "cityName": "Brussels",
+        "timeZone": "Europe/Brussels",
+        "offset": 2,
+        "country": "Belgium"
+      },
+      {
+        "cityName": "Zurich",
+        "timeZone": "Europe/Zurich",
+        "offset": 2,
+        "country": "Switzerland"
+      },
+      {
+        "cityName": "Stockholm",
+        "timeZone": "Europe/Stockholm",
+        "offset": 2,
+        "country": "Sweden"
+      },
+      {
+        "cityName": "Oslo",
+        "timeZone": "Europe/Oslo",
+        "offset": 2,
+        "country": "Norway"
+      },
+      {
+        "cityName": "Copenhagen",
+        "timeZone": "Europe/Copenhagen",
+        "offset": 2,
+        "country": "Denmark"
+      },
+      {
+        "cityName": "Warsaw",
+        "timeZone": "Europe/Warsaw",
+        "offset": 2,
+        "country": "Poland"
+      },
+      {
+        "cityName": "Vienna",
+        "timeZone": "Europe/Vienna",
+        "offset": 2,
+        "country": "Austria"
+      },
+      {
+        "cityName": "Moscow",
+        "timeZone": "Europe/Moscow",
+        "offset": 3,
+        "country": "Russia"
+      },
+      {
+        "cityName": "Athens",
+        "timeZone": "Europe/Athens",
+        "offset": 3,
+        "country": "Greece"
+      },
+      {
+        "cityName": "Istanbul",
+        "timeZone": "Europe/Istanbul",
+        "offset": 3,
+        "country": "Turkey"
+      },
+      {
+        "cityName": "Dubai",
+        "timeZone": "Asia/Dubai",
+        "offset": 4,
+        "country": "United Arab Emirates"
+      },
+      {
+        "cityName": "Abu Dhabi",
+        "timeZone": "Asia/Dubai",
+        "offset": 4,
+        "country": "United Arab Emirates"
+      },
+      {
+        "cityName": "Mumbai",
+        "timeZone": "Asia/Kolkata",
+        "offset": 5.5,
+        "country": "India"
+      },
+      {
+        "cityName": "New Delhi",
+        "timeZone": "Asia/Kolkata",
+        "offset": 5.5,
+        "country": "India"
+      },
+      {
+        "cityName": "Bangalore",
+        "timeZone": "Asia/Kolkata",
+        "offset": 5.5,
+        "country": "India"
+      },
+      {
+        "cityName": "Bangkok",
+        "timeZone": "Asia/Bangkok",
+        "offset": 7,
+        "country": "Thailand"
+      },
+      {
+        "cityName": "Jakarta",
+        "timeZone": "Asia/Jakarta",
+        "offset": 7,
+        "country": "Indonesia"
+      },
+      {
+        "cityName": "Singapore",
+        "timeZone": "Asia/Singapore",
+        "offset": 8,
+        "country": "Singapore"
+      },
+      {
+        "cityName": "Hong Kong",
+        "timeZone": "Asia/Hong_Kong",
+        "offset": 8,
+        "country": "China"
+      },
+      {
+        "cityName": "Beijing",
+        "timeZone": "Asia/Shanghai",
+        "offset": 8,
+        "country": "China"
+      },
+      {
+        "cityName": "Shanghai",
+        "timeZone": "Asia/Shanghai",
+        "offset": 8,
+        "country": "China"
+      },
+      {
+        "cityName": "Seoul",
+        "timeZone": "Asia/Seoul",
+        "offset": 9,
+        "country": "South Korea"
+      },
+      {
+        "cityName": "Tokyo",
+        "timeZone": "Asia/Tokyo",
+        "offset": 9,
+        "country": "Japan"
+      },
+      {
+        "cityName": "Osaka",
+        "timeZone": "Asia/Tokyo",
+        "offset": 9,
+        "country": "Japan"
+      },
+      {
+        "cityName": "Sydney",
+        "timeZone": "Australia/Sydney",
+        "offset": 10,
+        "country": "Australia"
+      },
+      {
+        "cityName": "Melbourne",
+        "timeZone": "Australia/Melbourne",
+        "offset": 10,
+        "country": "Australia"
+      },
+      {
+        "cityName": "Brisbane",
+        "timeZone": "Australia/Brisbane",
+        "offset": 10,
+        "country": "Australia"
+      },
+      {
+        "cityName": "Perth",
+        "timeZone": "Australia/Perth",
+        "offset": 8,
+        "country": "Australia"
+      },
+      {
+        "cityName": "Auckland",
+        "timeZone": "Pacific/Auckland",
+        "offset": 12,
+        "country": "New Zealand"
+      },
+      {
+        "cityName": "Wellington",
+        "timeZone": "Pacific/Auckland",
+        "offset": 12,
+        "country": "New Zealand"
+      },
+      {
+        "cityName": "Cairo",
+        "timeZone": "Africa/Cairo",
+        "offset": 2,
+        "country": "Egypt"
+      },
+      {
+        "cityName": "Johannesburg",
+        "timeZone": "Africa/Johannesburg",
+        "offset": 2,
+        "country": "South Africa"
+      },
+      {
+        "cityName": "Cape Town",
+        "timeZone": "Africa/Johannesburg",
+        "offset": 2,
+        "country": "South Africa"
+      },
+      {
+        "cityName": "Lagos",
+        "timeZone": "Africa/Lagos",
+        "offset": 1,
+        "country": "Nigeria"
+      },
+      {
+        "cityName": "Nairobi",
+        "timeZone": "Africa/Nairobi",
+        "offset": 3,
+        "country": "Kenya"
+      },
+      {
+        "cityName": "Tel Aviv",
+        "timeZone": "Asia/Tel_Aviv",
+        "offset": 3,
+        "country": "Israel"
+      }
+    ]
+  }

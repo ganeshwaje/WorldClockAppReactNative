@@ -91,13 +91,11 @@ function WorldClockScreen(): JSX.Element {
   const renderItem = ({ item }: { item: TimeZoneItem }) => {
     const zonedDate = toZonedTime(currentTime, item.timeZone);
     
-    const timeInZone = format(zonedDate, 'HH:mm:ss', {
+    const timeInZone = format(zonedDate, 'h:mm a', {
       timeZone: item.timeZone,
     });
 
-    const today = format(zonedDate, 'EEE', {
-      timeZone: item.timeZone,
-    });
+    const timeDifference = item.offset > 0 ? `+${item.offset}` : `${item.offset}`
 
     const hourDiff = item.offset;
     const isYesterday = hourDiff < 0 && new Date().getUTCHours() + hourDiff < 0;
@@ -114,10 +112,17 @@ function WorldClockScreen(): JSX.Element {
       >
         <View style={styles.itemContainer}>
           <View style={styles.leftContent}>
+            <Text style={styles.dayInfo}>{`${dayLabel}, ${timeDifference}`}</Text>
             <Text style={styles.cityName}>{item.cityName}</Text>
-            <Text style={styles.dayInfo}>{`${dayLabel}, ${today}`}</Text>
           </View>
-          <Text style={styles.time}>{timeInZone}</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.time}>
+              {format(zonedDate, 'h:mm', { timeZone: item.timeZone })}
+            </Text>
+            <Text style={styles.amPm}>
+              {format(zonedDate, 'a', { timeZone: item.timeZone })}
+            </Text>
+          </View>
         </View>
       </Swipeable>
     );
@@ -149,76 +154,85 @@ function WorldClockScreen(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000000',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  headerTitle: {
-    fontSize: 34,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-  },
-  addButton: {
-    padding: 8,
-  },
-  addButtonText: {
-    fontSize: 28,
-    color: '#007AFF',
-  },
-  list: {
-    flex: 1,
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#000000',
-  },
-  leftContent: {
-    flex: 1,
-  },
-  cityName: {
-    fontSize: 20,
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  dayInfo: {
-    fontSize: 15,
-    color: '#666666',
-  },
-  time: {
-    fontSize: 48,
-    color: '#FFFFFF',
-    fontVariant: ['tabular-nums'],
-  },
-  separator: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: '#333333',
-    marginLeft: 16,
-  },
-  deleteAction: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 80,
-    backgroundColor: '#FF3B30',
-  },
-  deleteButton: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  deleteButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    paddingHorizontal: 12,
-  },
-});
+    container: {
+      flex: 1,
+      backgroundColor: '#000000',
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+    },
+    headerTitle: {
+      fontSize: 34,
+      fontWeight: 'bold',
+      color: '#FFFFFF',
+    },
+    addButton: {
+      padding: 8,
+    },
+    addButtonText: {
+      fontSize: 28,
+      color: '#007AFF',
+    },
+    list: {
+      flex: 1,
+    },
+    itemContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 16,
+      backgroundColor: '#000000',
+    },
+    leftContent: {
+      flex: 1,
+    },
+    cityName: {
+      fontSize: 20,
+      color: '#FFFFFF',
+      marginBottom: 4,
+    },
+    dayInfo: {
+      fontSize: 15,
+      color: '#666666',
+    },
+    timeContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+      },
+    time: {
+      fontSize: 48,
+      color: '#FFFFFF',
+      fontVariant: ['tabular-nums'],
+    },
+    amPm: {
+        fontSize: 30,
+        color: '#FFFFFF',
+        fontVariant: ['tabular-nums'],
+      },
+    separator: {
+      height: StyleSheet.hairlineWidth,
+      backgroundColor: '#333333',
+      marginLeft: 16,
+    },
+    deleteAction: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 80,
+      backgroundColor: '#FF3B30',
+    },
+    deleteButton: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    deleteButtonText: {
+      color: '#FFFFFF',
+      fontSize: 16,
+      paddingHorizontal: 12,
+    },
+  });
 
 export default WorldClockScreen;
