@@ -139,7 +139,7 @@ This project is licensed under the MIT License - see the ![LICENSE](LICENSE.md) 
 
 ## Screenshots
 
-![Home Screen](homeScreen.png) ![Timezone List](timezones.png)
+[<img src="./homeScreen.png" width="200" />](Home Screen)[<img src="./timezones.png" width="200" />](Timezone List)
 
 ## Future Improvements
 
